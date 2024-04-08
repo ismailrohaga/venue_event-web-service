@@ -1,36 +1,10 @@
 const express = require("express");
 const app = express();
-const helmet = require("helmet");
+const expressConfig = require("./express");
+const serverConfig = require("./server");
 
-require("dotenv").config();
+expressConfig(app, express);
 
-app.use(
-  helmet({
-    crossOriginResourcePolicy: { policy: "same-site" },
-  })
-);
+const port = process.env.PORT || 3001;
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
-  );
-  next();
-});
-
-app.use(express.json());
-
-const port = 3000;
-
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
-
-app.listen(port, () => {
-  console.log(`Started up at port ${port}`);
-});
+serverConfig(app, port);
