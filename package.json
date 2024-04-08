@@ -3,9 +3,17 @@
   "version": "1.0.0",
   "description": "venue event web service",
   "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
   "author": "ismailrohaga",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.19.2"
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "nodemon": "^3.1.0"
   }
 }
