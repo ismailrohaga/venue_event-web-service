@@ -1,0 +1,11 @@
+{
+  "name": "venue_event-service",
+  "version": "1.0.0",
+  "description": "venue event web service",
+  "main": "app.js",
+  "author": "ismailrohaga",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
