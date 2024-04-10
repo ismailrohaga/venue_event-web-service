@@ -1,4 +1,5 @@
 const helmet = require("helmet");
+const morgan = require("morgan");
 
 const expressConfig = (app, express) => {
   app.use(
@@ -21,6 +22,8 @@ const expressConfig = (app, express) => {
   });
 
   app.use(express.json());
+
+  app.use(morgan("dev"));
 };
 
 module.exports = expressConfig;

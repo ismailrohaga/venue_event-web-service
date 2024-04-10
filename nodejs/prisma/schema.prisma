@@ -43,6 +43,6 @@ model Token {
   updatedAt DateTime @updatedAt
   expiredAt DateTime @default(now())
   token     String   @unique
-  userId    Int
+  userId    String
   type      String?  @default("ACCESS")
 }
