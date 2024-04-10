@@ -1,12 +1,6 @@
-const serverConfig = (app, port) => {
-  function start() {
-    try {
-      app.listen(port, () => console.log(`🚀 @ http://localhost:${port}`));
-    } catch (error) {
-      console.log(error);
-    }
-  }
-  start();
-};
+const app = require("./app");
+require("dotenv").config();
 
-module.exports = serverConfig;
+const port = process.env.PORT || 3001;
+
+app.listen(port, () => console.log(`🚀 @ http://localhost:${port}`));

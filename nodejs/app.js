@@ -1,12 +1,33 @@
 const express = require("express");
-const expressConfig = require("./express");
-const serverConfig = require("./server");
+const helmet = require("helmet");
+const morgan = require("morgan");
 const router = require("./src/routers/api.route");
 const createError = require("http-errors");
-require("dotenv").config();
 
 const app = express();
-expressConfig(app, express);
+
+app.use(
+  helmet({
+    crossOriginResourcePolicy: { policy: "same-site" },
+  })
+);
+
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content, Accept, Content-Type, Authorization"
+  );
+  res.setHeader(
+    "Access-Control-Allow-Methods",
+    "GET, POST, PUT, DELETE, PATCH, OPTIONS"
+  );
+  next();
+});
+
+app.use(express.json());
+
+app.use(morgan("dev"));
 
 app.use("/api", router);
 
@@ -22,6 +43,4 @@ app.use((err, req, res, next) => {
   });
 });
 
-const port = process.env.PORT || 3001;
-
-serverConfig(app, port);
+module.exports = app;
