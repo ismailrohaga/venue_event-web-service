@@ -4,20 +4,25 @@
   "description": "venue event web service",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "author": "ismailrohaga",
   "license": "MIT",
   "dependencies": {
     "@prisma/client": "^5.12.1",
-    "bcrypt": "^5.1.1",
+    "crypto": "^1.0.1",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "helmet": "^7.1.0",
+    "http-errors": "^2.0.0",
     "jsonwebtoken": "^9.0.2",
-    "nodemon": "^3.1.0"
+    "moment": "^2.30.1",
+    "morgan": "^1.10.0",
+    "superstruct": "^1.0.4"
   },
   "devDependencies": {
+    "nodemon": "^3.1.0",
     "prisma": "^5.12.1"
   }
 }
