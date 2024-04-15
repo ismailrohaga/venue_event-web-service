@@ -1,8 +1,6 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 // Whenever you update your Prisma schema, 
-// you will have to update your database schema using either prisma migrate dev or prisma db push. 
+// you will have to update your database schema using either `prisma migrate dev` or `prisma db push`.
+// TIP: use `prisma studio`
 
 generator client {
   provider = "prisma-client-js"

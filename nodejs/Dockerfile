@@ -1,7 +1,8 @@
 FROM node:20
 WORKDIR /app
 COPY package.json /app
+COPY yarn.lock /app
 RUN yarn install
 COPY . /app
-CMD node server.js
-EXPOSE 3000
+RUN yarn prisma generate
+CMD yarn start

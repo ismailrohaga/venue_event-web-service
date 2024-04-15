@@ -5,20 +5,32 @@ services:
     container_name: venue_event-web-service
     restart: always
     build: .
-    ports:
-      - "3000:3030"
-    environment:
-      WAIT_HOST: postgres:5430
-    depends_on:
+    ports: 
+      - 8000:3000
+    depends_on: 
       - postgres
+    env_file: .env
 
   postgres:
     container_name: postgres
     image: postgres
     restart: always
-    ports:
-      - "5430:5433"
+    ports: 
+      - 5445:5432
     environment:
-      - POSTGRES_PASSWORD=password
-      - POSTGRES_USER=shuffle
-      - POSTGRES_DB=shuffle
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB: ${DB_NAME}
+  
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    depends_on: 
+      - postgres
+    ports: 
+      - 5050:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_PASS}
+    restart: unless-stopped
+    
